@@ -12,13 +12,14 @@ describe('API routes', function () {
       chai
         .request(server)
         .get('/')
-        .end((error, response) => {
+        .end(function (error, response) {
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(response).to.be.json;
           expect(response.body).to.have.key('_links');
           expect(response.body._links).to.have.key('self');
           expect(response.body._links).to.have.key('actions');
+          done();
         });
     });
   });
