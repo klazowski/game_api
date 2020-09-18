@@ -1,5 +1,4 @@
 import express from 'express';
-import { Server } from 'http';
 import config from './config';
 
 const app: express.Application = express();
