@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
-import actions from '../../../api/routes/actions';
+import actions from '../../../src/api/routes/actions';
 
 chai.use(chaiHttp);
 
