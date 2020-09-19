@@ -13,4 +13,18 @@ describe('Database access', function () {
       done();
     });
   });
+  describe('Add action', function () {
+    it('Should add action to database and return id', function (done: Mocha.Done) {
+      const newAction: NewAction = {
+        userId: 3,
+        gameId: 7,
+        action: 'CANCEL',
+      };
+      const newId = actionsDB.add(newAction);
+      expect(newId).to.be.greaterThan(0);
+      expect(actionsDB.getById(newId)).to.not.be.null;
+      // ToDo: add some sort of check if action was saved correctly.
+      done();
+    });
+  });
 });

@@ -12,4 +12,24 @@ const getById = (id: ActionId): IAction | null => {
   return null;
 };
 
-export default { getAll, getById };
+const add = (action: { userId: UserId; gameId: GameId; action: ActionType }): ActionId => {
+  const newId = actions.length + 1;
+  actions.push({
+    id: newId,
+    userId: action.userId,
+    gameId: action.gameId,
+    action: action.action,
+    _links: {
+      self: {
+        href: `/actions/${newId}`,
+      },
+      actions: {
+        href: '/actions',
+      },
+    },
+  });
+  if (getById(newId) === null) return -1;
+  return newId;
+};
+
+export default { getAll, getById, add };
