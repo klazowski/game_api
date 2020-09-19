@@ -1,0 +1,1 @@
+type ActionId = number;
