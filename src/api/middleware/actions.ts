@@ -16,4 +16,16 @@ const getActions = (): IActions => {
   return actions;
 };
 
-export { getActions };
+const getAction = (actionId: ActionId): IAction | null => {
+  const action: IAction | null = actionsDB.getById(actionId);
+
+  if (action === null) return null;
+
+  return action;
+};
+
+const addAction = (action: NewAction): ActionId => {
+  return actionsDB.add(action);
+};
+
+export { getActions, getAction, addAction };
