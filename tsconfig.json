@@ -5,7 +5,7 @@
     "outDir": "./build",
     "noEmitOnError": true,
 
-    "allowJs": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
 
     "strict": true,
 
@@ -15,5 +15,6 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "tests"]
+  "exclude": ["node_modules", "tests"],
+  "ts-node": { "files": true }
 }
