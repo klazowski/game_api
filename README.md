@@ -1,6 +1,6 @@
 # game_api
 
-ToDo:
+Zadanie:
 
 - wystawic 1 REST endpoint, który przyjmuje POSTem:
   {userId: ..., gameId: ...., action: ...}
@@ -8,3 +8,8 @@ ToDo:
   MySql może być lokalny, cloud whatever :)
 - wgraj proszę rozwiązanie do githuba
 - a w readme.md spisać proszę jak to cudo uruchomić
+
+ToDo;
+
+1. Heroku.
+2. Oracle MySql.
