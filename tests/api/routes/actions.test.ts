@@ -1,5 +1,6 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import IActions from '../../../src/models/IActions';
 
 import server from '../../../src/server';
 
@@ -29,24 +30,29 @@ describe('Actions routes', function () {
   });
   describe('"/actions" POST request', function () {
     it('"/" POST request should add action to DB and return json with saved action', function (done: Mocha.Done) {
+      const newAction = { userId: 1, gameId: 1, action: 'CANCEL' };
       chai
         .request(server)
         .post('/actions')
-        .send({ userId: 1, gameId: 1, action: 'skip' })
+        .send(newAction)
         .end(function (error, response) {
           expect(error).to.be.null;
           expect(response).to.have.status(201);
           expect(response).to.be.json;
-          expect(response.body).to.have.keys('action', '_links');
-          expect(response.body._links).to.have.keys('self', 'actions');
-          const savedAction = response.body;
+          expect(response.body).to.have.keys('success', 'action');
+          expect(response.body.success).to.be.true;
+          const savedAction = response.body.action;
+          expect(savedAction).to.have.keys('id', 'userId', 'gameId', 'action', '_links');
+          expect(savedAction._links).to.have.keys('self', 'actions');
+
           chai
             .request(server)
             .get('/actions')
             .end(function (error, response) {
               expect(error).to.be.null;
               expect(response).to.have.status(200);
-              expect(response.body.actions).to.be.an('array').that.includes(savedAction);
+              const allActions: IActions = response.body.actions;
+              expect(allActions).to.be.an('array').that.deep.includes(savedAction);
               done();
             });
         });
