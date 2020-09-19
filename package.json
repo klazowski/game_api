@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "start": "node build/server.js",
-    "start-dev": "tsc && node -r dotenv/config build/server.js"
+    "start-dev": "tsc && node -r dotenv/config build/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && tsc"
   },
   "repository": {
     "type": "git",
@@ -38,5 +39,8 @@
   },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
