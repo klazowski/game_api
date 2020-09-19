@@ -1,5 +1,6 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import config from './config';
+import endpoints from './services/endpoints';
 
 const app: express.Application = express();
 
@@ -7,20 +8,7 @@ const PORT = config.PORT;
 
 app.use(express.json());
 
-const endpoints = {
-  _links: {
-    self: {
-      href: '/',
-      methods: ['GET'],
-    },
-    actions: {
-      href: '/actions',
-      methods: ['GET', 'POST'],
-    },
-  },
-};
-
-app.get('/', (request: express.Request, response: express.Response): void => {
+app.get('/', (request: Request, response: Response): void => {
   response.status(200).json(endpoints);
 });
 
