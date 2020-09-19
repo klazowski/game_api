@@ -20,10 +20,8 @@ describe('Actions routes', function () {
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(response).to.be.json;
-          console.log(JSON.stringify(response.body));
-          expect(response.body).to.have.key('actions');
+          expect(response.body).to.have.keys('actions', '_links');
           expect(response.body.actions).to.be.an('array');
-          expect(response.body).to.have.key('_links');
           expect(response.body._links).to.have.key('self');
           done();
         });
@@ -39,10 +37,8 @@ describe('Actions routes', function () {
           expect(error).to.be.null;
           expect(response).to.have.status(201);
           expect(response).to.be.json;
-          expect(response.body).to.have.key('action');
-          expect(response.body).to.have.key('_links');
-          expect(response.body._links).to.have.key('self');
-          expect(response.body._links).to.have.key('actions');
+          expect(response.body).to.have.keys('action', '_links');
+          expect(response.body._links).to.have.keys('self', 'actions');
           const savedAction = response.body;
           chai
             .request(server)
@@ -57,21 +53,3 @@ describe('Actions routes', function () {
     });
   });
 });
-/*
-{
-  action: {
-    id: 102,
-    userId: 12,
-    gameId: 22,
-    action: "stop",
-    _links: {
-      self: {
-        href: "http://localhost:5001/actions/${id}"
-      },
-      actions: {
-        href: "http://localhost:5001/actions"
-      }
-    },
-  }
-}
-*/
