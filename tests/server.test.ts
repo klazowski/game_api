@@ -17,8 +17,7 @@ describe('API routes', function () {
           expect(response).to.have.status(200);
           expect(response).to.be.json;
           expect(response.body).to.have.key('_links');
-          expect(response.body._links).to.have.key('self');
-          expect(response.body._links).to.have.key('actions');
+          expect(response.body._links).to.have.keys(['self', 'actions']);
           done();
         });
     });
