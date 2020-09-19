@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
-import actions from '../../../src/api/routes/actions';
+import server from '../../../src/server';
 
 chai.use(chaiHttp);
 
@@ -14,12 +14,13 @@ describe('Actions routes', function () {
   describe('"/actions" GET request', function () {
     it('"/" GET request should return json with list of actions', function (done: Mocha.Done) {
       chai
-        .request(actions)
-        .get('/')
+        .request(server)
+        .get('/actions')
         .end(function (error, response) {
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(response).to.be.json;
+          console.log(JSON.stringify(response.body));
           expect(response.body).to.have.key('actions');
           expect(response.body.actions).to.be.an('array');
           expect(response.body).to.have.key('_links');
@@ -31,8 +32,8 @@ describe('Actions routes', function () {
   describe('"/actions" POST request', function () {
     it('"/" POST request should add action to DB and return json with saved action', function (done: Mocha.Done) {
       chai
-        .request(actions)
-        .post('/')
+        .request(server)
+        .post('/actions')
         .send({ userId: 1, gameId: 1, action: 'skip' })
         .end(function (error, response) {
           expect(error).to.be.null;
@@ -44,8 +45,8 @@ describe('Actions routes', function () {
           expect(response.body._links).to.have.key('actions');
           const savedAction = response.body;
           chai
-            .request(actions)
-            .get('/')
+            .request(server)
+            .get('/actions')
             .end(function (error, response) {
               expect(error).to.be.null;
               expect(response).to.have.status(200);
