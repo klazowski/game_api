@@ -35,6 +35,7 @@ router.post('/', (request: Request, response: Response): void => {
       success: false,
       message: 'New action must have proper format: { userId: ..., gameId: ..., action: ... }',
     });
+    return;
   }
 
   const newId: ActionId = addAction(newAction);
