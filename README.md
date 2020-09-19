@@ -13,3 +13,12 @@ ToDo;
 
 1. Heroku.
 2. Oracle MySql.
+
+How to?
+
+1. Apka jest dostępna na Heroku: https://kalamba-games-api.herokuapp.com/
+2. Manualnie/lokalnie:
+   a) Git clone,
+   b) npm i
+   c) opcjonalnie: utworzyć plik .env zawierający PORT=xxxx. W przeciwnym wypadku serwer nasłuchuje na 3001.
+   d) npm run start-dev
