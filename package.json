@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha -r ts-node/register -r dotenv/config tests/**/*.test.ts",
     "start": "node build/server.js",
-    "start-dev": "concurrently \"tsc -w\" && \"nodemon -r dotenv/config build/server.js\"",
+    "start-dev": "concurrently \"tsc -w\" \"nodemon -r dotenv/config build/server.js\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && tsc"
   },
   "repository": {
