@@ -16,7 +16,7 @@
 1. Apka jest dostępna na Heroku: [https://kalamba-games-api.herokuapp.com/] ale korzysta z tablicy zamiast mysql.
 2. Manualnie/lokalnie:
 
-   - `Git clone `,
+   - `Git clone https://github.com/klazowski/game_api.git`,
    - `npm i`,
    - Utworzyć serwer MySql zawierający bazę `game`
      Ja skorzystałem z MySQL w Xampp.
