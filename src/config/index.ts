@@ -6,6 +6,7 @@ const config = {
     database: process.env.MYSQL_DB || 'game',
     user: process.env.MYSQL_USER || 'user',
     password: process.env.MYSQL_PASSWD || 'passwd',
+    uri: process.env.MYSQL_URI || '',
   },
   mockDb: process.env.MOCK_DB || 'true',
 };
