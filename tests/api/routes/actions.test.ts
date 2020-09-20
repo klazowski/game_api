@@ -21,9 +21,9 @@ describe('Actions routes', function () {
           expect(error).to.be.null;
           expect(response).to.have.status(200);
           expect(response).to.be.json;
-          expect(response.body).to.have.keys('actions', '_links');
+          expect(response.body).to.include.keys('actions', '_links');
           expect(response.body.actions).to.be.an('array');
-          expect(response.body._links).to.have.key('self');
+          expect(response.body._links).to.include.keys('self');
           done();
         });
     });
@@ -39,11 +39,11 @@ describe('Actions routes', function () {
           expect(error).to.be.null;
           expect(response).to.have.status(201);
           expect(response).to.be.json;
-          expect(response.body).to.have.keys('success', 'action');
+          expect(response.body).to.include.keys('success', 'action');
           expect(response.body.success).to.be.true;
           const savedAction = response.body.action;
-          expect(savedAction).to.have.keys('id', 'userId', 'gameId', 'action', '_links');
-          expect(savedAction._links).to.have.keys('self', 'actions');
+          expect(savedAction).to.include.keys('id', 'userId', 'gameId', 'action', '_links');
+          expect(savedAction._links).to.include.keys('self', 'actions');
 
           chai
             .request(server)
