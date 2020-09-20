@@ -4,7 +4,7 @@
   "description": "Game API for KGames",
   "main": "server.js",
   "scripts": {
-    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "test": "mocha -r ts-node/register -r dotenv/config tests/**/*.test.ts",
     "start": "node build/server.js",
     "start-dev": "concurrently \"tsc -w\" && \"nodemon -r dotenv/config build/server.js\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && tsc"
@@ -30,7 +30,6 @@
     "@types/express": "^4.17.8",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.11.1",
-    "@types/sequelize": "^4.28.9",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "concurrently": "^5.3.0",
