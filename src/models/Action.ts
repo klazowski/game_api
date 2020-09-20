@@ -1,8 +1,15 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/mysql/getConnection';
+import IAction from './IAction';
 
-const Action = sequelize.define(
-  'Action',
+class Action extends Model implements IAction {
+  public id!: ActionId;
+  public userId!: UserId;
+  public gameId!: GameId;
+  public action!: ActionType;
+}
+
+Action.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -25,6 +32,7 @@ const Action = sequelize.define(
   },
   {
     tableName: 'action',
+    sequelize,
   }
 );
 
