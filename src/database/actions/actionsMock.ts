@@ -1,5 +1,5 @@
-import IAction from '../models/IAction';
-import actions from './mockup';
+import IAction from '../../models/IAction';
+import actions from '../mockup';
 
 const getAll = (): IAction[] => {
   return actions;

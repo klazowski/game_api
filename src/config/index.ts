@@ -7,6 +7,7 @@ const config = {
     user: process.env.MYSQL_USER || 'user',
     password: process.env.MYSQL_PASSWD || 'passwd',
   },
+  mockDb: process.env.MOCK_DB || 'true',
 };
 
 export default config;
