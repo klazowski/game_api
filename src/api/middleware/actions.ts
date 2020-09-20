@@ -1,11 +1,33 @@
 import actionsDB from '../../database/actions';
 import IAction from '../../models/IAction';
-import IActions from '../../models/IActions';
+import IActionREST from '../../models/IActionREST';
+import IActionsREST from '../../models/IActionsREST';
 
-const getActions = (): IActions => {
-  const actionsArray: IAction[] = actionsDB.getAll();
-  const actions: IActions = {
-    actions: actionsArray,
+const makeRestAction = (action: IAction): IActionREST => {
+  return {
+    ...action,
+    _links: {
+      self: {
+        href: `/actions/${action.id}`,
+      },
+      actions: {
+        href: `/actions`,
+      },
+    },
+  };
+};
+
+const getActions = async (): Promise<IActionsREST> => {
+  const actionsArray: IAction[] = await actionsDB.getAll();
+
+  const actionsREST: IActionREST[] = actionsArray.map(
+    (action: IAction): IActionREST => {
+      return makeRestAction(action);
+    }
+  );
+
+  const actions: IActionsREST = {
+    actions: actionsREST,
     _links: {
       self: {
         href: '/actions',
@@ -16,16 +38,15 @@ const getActions = (): IActions => {
   return actions;
 };
 
-const getAction = (actionId: ActionId): IAction | null => {
-  const action: IAction | null = actionsDB.getById(actionId);
-
+const getAction = async (actionId: ActionId): Promise<IActionREST | null> => {
+  const action: IAction | null = await actionsDB.getById(actionId);
   if (action === null) return null;
 
-  return action;
+  return makeRestAction(action);
 };
 
-const addAction = (action: NewAction): ActionId => {
-  return actionsDB.add(action);
+const addAction = async (action: NewAction): Promise<ActionId> => {
+  return await actionsDB.add(action);
 };
 
 export { getActions, getAction, addAction };
