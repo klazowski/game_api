@@ -6,6 +6,8 @@ const setupDB = async (): Promise<boolean> => {
 
   await Action.sync();
 
+  console.log(`DB setup successful`);
+
   return true;
 };
 
