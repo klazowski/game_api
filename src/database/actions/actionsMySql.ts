@@ -3,15 +3,17 @@ import IAction from '../../models/IAction';
 import IDatabaseActions from '../interfaces/IDatabaseActions';
 
 const getAll = async (): Promise<IAction[]> => {
-  return await Action.findAll();
+  const actions = await Action.findAll();
+  return actions.map((action) => action.toJSON() as IAction);
 };
 
 const getById = async (id: ActionId): Promise<IAction | null> => {
-  return await Action.findOne({
+  const action = await Action.findOne({
     where: {
       id: id,
     },
   });
+  return action?.toJSON() as IAction;
 };
 
 const add = async (action: {
@@ -19,7 +21,7 @@ const add = async (action: {
   gameId: GameId;
   action: ActionType;
 }): Promise<ActionId> => {
-  const newAction = await Action.create(action);
+  const newAction = (await Action.create(action)).toJSON() as IAction;
   return newAction.id;
 };
 
