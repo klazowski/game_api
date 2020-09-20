@@ -16,7 +16,7 @@ app.get('/', (request: Request, response: Response): void => {
   response.status(200).json(endpoints);
 });
 
-dbLoader.setupDB();
+if (config.mockDb === 'false') dbLoader.setupDB();
 
 app.listen(PORT, (): void => {
   console.log(`Server listening on port ${PORT}`);
