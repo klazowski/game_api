@@ -1,1 +1,1 @@
-type GameId = number;
+type GameId = string;

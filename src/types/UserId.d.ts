@@ -1,1 +1,1 @@
-type UserId = number;
+type UserId = string;

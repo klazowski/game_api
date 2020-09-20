@@ -1,1 +1,1 @@
-type ActionId = number;
+type ActionId = string;
