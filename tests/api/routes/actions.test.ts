@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import IActions from '../../../src/models/IActions';
+import IActionsREST from '../../../src/models/IActionsREST';
 
 import server from '../../../src/server';
 
@@ -51,7 +51,7 @@ describe('Actions routes', function () {
             .end(function (error, response) {
               expect(error).to.be.null;
               expect(response).to.have.status(200);
-              const allActions: IActions = response.body.actions;
+              const allActions: IActionsREST = response.body.actions;
               expect(allActions).to.be.an('array').that.deep.includes(savedAction);
               done();
             });
