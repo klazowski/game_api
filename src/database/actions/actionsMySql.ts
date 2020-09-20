@@ -1,14 +1,17 @@
 import Action from '../../models/Action';
 import IAction from '../../models/IAction';
+import IDatabaseActions from '../interfaces/IDatabaseActions';
 
-let actions: IAction[] = [];
-
-const getAll = (): IAction[] => {
-  return actions;
+const getAll = async (): Promise<IAction[]> => {
+  return await Action.findAll();
 };
 
-const getById = (id: ActionId): IAction | null => {
-  return null;
+const getById = async (id: ActionId): Promise<IAction | null> => {
+  return await Action.findOne({
+    where: {
+      id: id,
+    },
+  });
 };
 
 const add = async (action: {
@@ -20,4 +23,6 @@ const add = async (action: {
   return newAction.id;
 };
 
-export default { getAll, getById, add };
+const actions: IDatabaseActions = { getAll: getAll, getById: getById, add: add };
+
+export default actions;

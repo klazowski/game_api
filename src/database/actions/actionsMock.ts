@@ -1,27 +1,44 @@
 import IAction from '../../models/IAction';
-import actions from '../mockup';
+import IDatabaseActions from '../interfaces/IDatabaseActions';
+import actionsDB from '../mockup';
 
-const getAll = (): IAction[] => {
-  return actions;
+const promiseWrapper = (o: any): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    resolve(o);
+  });
 };
 
-const getById = (id: ActionId): IAction | null => {
-  for (const index in actions) {
-    if (actions[index].id === id) return actions[index];
+const getAll = async (): Promise<IAction[]> => {
+  return promiseWrapper(actionsDB);
+};
+
+const getById = async (id: ActionId): Promise<IAction | null> => {
+  for (const index in actionsDB) {
+    if (actionsDB[index].id === id) return promiseWrapper(actionsDB[index]);
   }
-  return null;
+  return promiseWrapper(null);
 };
 
-const add = (action: { userId: UserId; gameId: GameId; action: ActionType }): ActionId => {
-  const newId = actions.length + 1;
-  actions.push({
+const add = async (action: {
+  userId: UserId;
+  gameId: GameId;
+  action: ActionType;
+}): Promise<ActionId> => {
+  const newId = actionsDB.length + 1;
+  actionsDB.push({
     id: newId.toString(),
     userId: action.userId,
     gameId: action.gameId,
     action: action.action,
   });
-  if (getById(newId.toString()) === null) return '-1';
-  return newId.toString();
+  const newAction = await getById(newId.toString());
+  if (newAction === null) return promiseWrapper('-1');
+  return promiseWrapper(newId.toString());
 };
 
-export default { getAll, getById, add };
+const actions: IDatabaseActions = {
+  getAll: getAll,
+  getById: getById,
+  add: add,
+};
+export default actions;
