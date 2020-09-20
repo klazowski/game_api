@@ -3,12 +3,4 @@ export default interface IAction {
   userId: UserId;
   gameId: GameId;
   action: ActionType;
-  _links: {
-    self: {
-      href: string;
-    };
-    actions: {
-      href: string;
-    };
-  };
 }
