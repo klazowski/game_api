@@ -13,8 +13,13 @@
 
 ## How to?
 
-1. Apka jest dostępna na Heroku: [https://kalamba-games-api.herokuapp.com/] ale korzysta z tablicy zamiast mysql.
-2. Manualnie/lokalnie:
+1. Docker:
+
+   - `Git clone https://github.com/klazowski/game_api.git`,
+   - `docker-compose up -d`
+
+2. Apka jest dostępna na Heroku: [https://kalamba-games-api.herokuapp.com/] ale korzysta z tablicy zamiast mysql.
+3. Manualnie/lokalnie:
 
    - `Git clone https://github.com/klazowski/game_api.git`,
    - `npm i`,
