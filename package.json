@@ -43,7 +43,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.2.2",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "wait-port": "^0.2.9"
   },
   "engines": {
     "node": "12.x"
