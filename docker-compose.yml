@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/app
     environment:
+      PORT: 5001
       MYSQL_HOST: mysql
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
