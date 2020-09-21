@@ -14,7 +14,8 @@ services:
       MYSQL_PASSWORD: secret
       MYSQL_PORT: 3306
       MYSQL_DB: game
-      MOCK_DB: false
+      MYSQL_URI: mysql://root:secret@mysql:3306/game
+      MOCK_DB: 'false'
 
   mysql:
     image: mysql:5.7
