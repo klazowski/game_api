@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+* { --c-primary: #d33f49; --c-light: #fcd5ce; --c-dark: #ffb5a7; --c-background: #f8edeb; --c-sheet: #fff; --c-mistake: #e65100; }
+
+html { --fs-small: 15px; --fs-regular: 18px; --fs-large: 24px; --fw-regular: 400; --fw-bold: 700; /* Default font settings */ font-family: 'Barlow Semi Condensed', sans-serif; color: #000; font-size: var(--fs-basic); font-weight: var(--fw-regular); }
+
+.wrapper { min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; }
+
+*, *:before, *:after { box-sizing: border-box; padding: 0; margin: 0; }
+
+button { cursor: pointer; padding: 0; margin: 0; background-color: transparent; color: inherit; font: inherit; border: none; }
+
+body { background-color: var(--c-background); }
+
+.actions-list { display: flex; flex-direction: column; min-width: fit-content; width: 20em; min-height: fit-content; height: 20em; }
+
+.actions-list__header { display: flex; }
+
+.actions-list__item-limit { margin-left: auto; }
+
+.actions-list__content { margin-top: 1em; width: 100%; }
+
+.actions-list__content > table { width: 100%; }
+
+.actions-list__content > table td { text-align: center; }
+
+.actions-list__footer { display: flex; margin-top: auto; width: 100%; }
+
+.btn--cta, .btn--ghost { padding: 0.25em 1em; border-radius: 0.25em; border: 2px solid var(--c-primary); }
+
+.btn--cta { margin-left: auto; background-color: var(--c-primary); }
+
+.btn--ghost { background-color: transparent; }
+
+.action-form { display: flex; flex-direction: column; box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
+
+.action-form__header { padding: 0.5rem 1rem; background-color: var(--c-dark); }
+
+.action-form__header p { font-size: var(--fs-large); }
+
+.action-form__content { padding: 2rem 1rem; display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto auto auto auto; gap: 0.75em; background-color: var(--c-sheet); }
+
+.action-form__label { padding: 0.5em 0.25em; }
+
+.action-form__text-input, .action-form__droplist { padding: 0.5em 0.25em; }
+
+.action-form__submit { grid-column: 1/3; margin-left: auto; padding: 0.5em 1.5em; color: #fff; text-transform: uppercase; font-weight: var(--fw-bold); letter-spacing: 2px; background-color: var(--c-primary); border-radius: 0.25em; }
+
+.action-form__submit:hover, .action-form__submit:focus { opacity: 0.95; }
+
+.mistake { border: 3px solid var(--c-mistake); }
+
+.action-form__message { grid-column: 1/3; color: var(--c-mistake); }
+/*# sourceMappingURL=App.min.css.map */

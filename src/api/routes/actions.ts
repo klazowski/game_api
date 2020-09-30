@@ -16,7 +16,7 @@ const router: express.Router = express.Router();
 router.get(
   '/',
   async (request: Request, response: Response): Promise<void> => {
-    response.status(200).json(await getActions());
+    response.status(200).json({ success: true, actions: await getActions() });
   }
 );
 

@@ -1,0 +1,17 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+html {
+  --fs-small: 15px;
+  --fs-regular: 18px;
+  --fs-large: 24px;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  /* Default font settings */
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  color: #000;
+  font-size: var(--fs-basic);
+  font-weight: var(--fw-regular);
+}
