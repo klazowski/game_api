@@ -3,10 +3,14 @@ import config from './config';
 import endpoints from './services/endpoints';
 import actionsRoute from './api/routes/actions';
 import dbLoader from './loaders/database';
+import cors from 'cors';
 
 const app: express.Application = express();
 
 const PORT = config.PORT;
+
+// TODO: Add list of allowed origins
+app.use(cors());
 
 app.use(express.json());
 
