@@ -1,8 +1,9 @@
 version: '3.8'
 services:
-  app:
+  server-api:
     image: node:12-alpine
     command: sh -c "npm i && npm run start-dev"
+    container_name: server-api
     ports:
       - 5001:5001
     working_dir: /app
@@ -17,6 +18,16 @@ services:
       MYSQL_DB: game
       MYSQL_URI: mysql://root:secret@mysql:3306/game
       MOCK_DB: 'false'
+
+  react-client:
+    image: node:12-alpine
+    build:
+      context: ./client
+    ports:
+      - 3000:3000
+    container_name: react-client
+    volumes:
+      - ./client:/usr/src/app/client
 
   mysql:
     image: mysql:5.7
