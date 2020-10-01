@@ -35,11 +35,17 @@ body { background-color: var(--c-background); }
 
 .actions-list__item-limit { margin-left: auto; }
 
-.actions-list__content { margin-top: 1em; width: 100%; }
+.actions-list__content { margin-top: 1em; padding: 1em; width: 100%; }
 
-.actions-list__content > table { width: 100%; }
+.actions-list__content > table { border-collapse: collapse; width: 100%; }
 
-.actions-list__content > table td { text-align: center; }
+.actions-list__content > table > thead { background-color: var(--c-light); }
+
+.actions-list__content > table td { text-align: center; border: 1px solid #ddd; padding: 8px; }
+
+.actions-list__content > table tr:nth-child(even) { background-color: #f2f2f2; }
+
+.actions-list__content > table tr:hover { background-color: #ddd; }
 
 .actions-list__footer { display: flex; margin-top: auto; width: 100%; padding: 0.5em; }
 

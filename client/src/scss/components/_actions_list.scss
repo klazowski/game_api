@@ -29,14 +29,30 @@
 
 .actions-list__content {
   margin-top: 1em;
+  padding: 1em;
   width: 100%;
 
   & > table {
+    border-collapse: collapse;
     width: 100%;
+  }
+
+  & > table > thead {
+    background-color: var(--c-light);
   }
 
   & > table td {
     text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  & > table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  & > table tr:hover {
+    background-color: #ddd;
   }
 }
 
