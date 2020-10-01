@@ -28,6 +28,54 @@ const actions: IAction[] = [
     gameId: '7',
     action: 'CANCEL',
   },
+  {
+    id: '5',
+    userId: '12',
+    gameId: '22',
+    action: 'SAVE',
+  },
+  {
+    id: '6',
+    userId: '23',
+    gameId: '13',
+    action: 'CANCEL',
+  },
+  {
+    id: '7',
+    userId: '34',
+    gameId: '74',
+    action: 'SAVE',
+  },
+  {
+    id: '8',
+    userId: '35',
+    gameId: '75',
+    action: 'CANCEL',
+  },
+  {
+    id: '9',
+    userId: '12',
+    gameId: '22',
+    action: 'SAVE',
+  },
+  {
+    id: '10',
+    userId: '23',
+    gameId: '13',
+    action: 'CANCEL',
+  },
+  {
+    id: '11',
+    userId: '34',
+    gameId: '74',
+    action: 'SAVE',
+  },
+  {
+    id: '12',
+    userId: '35',
+    gameId: '75',
+    action: 'CANCEL',
+  },
 ];
 
 export default actions;
