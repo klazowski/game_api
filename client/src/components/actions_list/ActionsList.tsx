@@ -6,6 +6,7 @@ import Header from './Header';
 
 const ActionsList = (): JSX.Element => {
   const [actions, setActions] = useState<Action[]>([]);
+  const [currentActions, setCurrentActions] = useState<Action[]>([]);
   const [showPrevious, setShowPrevious] = useState<boolean>(true);
   const [showNext, setShowNext] = useState<boolean>(true);
   const [itemLimit, setItemLimit] = useState<number>(5);
@@ -15,20 +16,21 @@ const ActionsList = (): JSX.Element => {
     getActions()
       .then((result) => {
         setActions(result);
+        setCurrentActions(result.slice(1, 6));
       })
       .catch((error) => console.log(error));
   };
 
   const loadPage = () => {
+    setCurrentActions(actions.slice((currentPage - 1) * itemLimit, currentPage * itemLimit));
+
     if (currentPage > 1) {
       setShowPrevious(true);
     } else {
       setShowPrevious(false);
     }
 
-    // jeżeli actions <= itemLimit currentPage = 1 & hideButtons
-    // jeżeli actions > itemLimit, currentPage < actions.length/itemLimit +1, show buttons if exist next/previous page
-    if (actions.length / itemLimit + 1 > currentPage) {
+    if (actions.length / itemLimit > currentPage) {
       setShowNext(true);
     } else {
       setShowNext(false);
@@ -36,7 +38,7 @@ const ActionsList = (): JSX.Element => {
   };
 
   useEffect(() => loadActions(), []);
-  useEffect(() => loadPage(), [actions, currentPage]);
+  useEffect(() => loadPage(), [actions, currentPage, itemLimit]);
 
   const handleChangeItemLimit = (newLimit: number) => setItemLimit(newLimit);
 
@@ -45,16 +47,20 @@ const ActionsList = (): JSX.Element => {
   return (
     <div className="actions-list">
       <Header itemLimit={itemLimit} changeLimit={handleChangeItemLimit} />
-      <ActionsTable actions={actions} />
+      <ActionsTable actions={currentActions} />
       <div className="actions-list__footer">
         <button
-          className="btn--ghost"
+          className={`btn--ghost ${showPrevious ? '' : 'btn--disabled'}`}
           onClick={() => handlePageChange(-1)}
           disabled={!showPrevious}
         >
           Previous page
         </button>
-        <button className="btn--cta" onClick={() => handlePageChange(1)} disabled={!showNext}>
+        <button
+          className={`btn--cta ${showPrevious ? '' : 'btn--disabled'}`}
+          onClick={() => handlePageChange(1)}
+          disabled={!showNext}
+        >
           Next page
         </button>
       </div>

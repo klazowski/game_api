@@ -3,7 +3,9 @@
 
 html { --fs-small: 15px; --fs-regular: 18px; --fs-large: 24px; --fw-regular: 400; --fw-bold: 700; /* Default font settings */ font-family: 'Barlow Semi Condensed', sans-serif; color: #000; font-size: var(--fs-basic); font-weight: var(--fw-regular); }
 
-.wrapper { min-height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; }
+.wrapper { min-height: 100vh; width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+@media (min-width: 750px) { .wrapper { flex-direction: row; } }
 
 *, *:before, *:after { box-sizing: border-box; padding: 0; margin: 0; }
 
@@ -11,9 +13,25 @@ button { cursor: pointer; padding: 0; margin: 0; background-color: transparent; 
 
 body { background-color: var(--c-background); }
 
-.actions-list { display: flex; flex-direction: column; min-width: fit-content; width: 20em; min-height: fit-content; height: 20em; }
+.menu { background-color: var(--c-sheet); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
 
-.actions-list__header { display: flex; }
+@media (min-width: 750px) { .menu { margin-right: 2em; margin-bottom: 0; } }
+
+.menu__header { display: flex; padding: 0.5rem 1rem; background-color: var(--c-dark); }
+
+.menu__header p { margin: auto; font-size: var(--fs-large); }
+
+.menu__btns { display: flex; flex-direction: column; margin-bottom: 2em; padding: 1em; }
+
+.menu__btn { padding: 1em 3em; border: 2px solid var(--c-primary); border-radius: 0.25em; }
+
+.menu__btn--list { margin-top: 1em; }
+
+.actions-list { display: flex; flex-direction: column; min-width: 20em; width: fit-content; min-height: 20em; height: fit-content; background-color: var(--c-sheet); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
+
+.actions-list__header { display: flex; padding: 0.5rem 1rem; background-color: var(--c-dark); }
+
+.actions-list__header p { font-size: var(--fs-large); }
 
 .actions-list__item-limit { margin-left: auto; }
 
@@ -23,13 +41,15 @@ body { background-color: var(--c-background); }
 
 .actions-list__content > table td { text-align: center; }
 
-.actions-list__footer { display: flex; margin-top: auto; width: 100%; }
+.actions-list__footer { display: flex; margin-top: auto; width: 100%; padding: 0.5em; }
 
 .btn--cta, .btn--ghost { padding: 0.25em 1em; border-radius: 0.25em; border: 2px solid var(--c-primary); }
 
 .btn--cta { margin-left: auto; background-color: var(--c-primary); }
 
 .btn--ghost { background-color: transparent; }
+
+.btn--cta:disabled, .btn--ghost:disabled { opacity: 0.5; }
 
 .action-form { display: flex; flex-direction: column; box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
 
