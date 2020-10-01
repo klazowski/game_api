@@ -13,7 +13,7 @@ button { cursor: pointer; padding: 0; margin: 0; background-color: transparent; 
 
 body { background-color: var(--c-background); }
 
-.menu { background-color: var(--c-sheet); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
+.menu { margin-bottom: 2em; background-color: var(--c-sheet); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
 
 @media (min-width: 750px) { .menu { margin-right: 2em; margin-bottom: 0; } }
 
