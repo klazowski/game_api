@@ -46,7 +46,11 @@ const ActionsList = (): JSX.Element => {
 
   return (
     <div className="actions-list">
-      <Header itemLimit={itemLimit} changeLimit={handleChangeItemLimit} />
+      <Header
+        itemLimit={itemLimit}
+        actionsCount={actions.length}
+        changeLimit={handleChangeItemLimit}
+      />
       <ActionsTable actions={currentActions} />
       <div className="actions-list__footer">
         <button

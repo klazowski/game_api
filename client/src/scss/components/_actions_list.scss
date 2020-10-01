@@ -16,11 +16,22 @@
   display: flex;
   padding: 0.5rem 1rem;
 
+  justify-content: space-between;
+
   background-color: var(--c-dark);
 
   & p {
     font-size: var(--fs-large);
   }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+  }
+}
+.actions-list__total-actions > span {
+  font-weight: var(--fw-bold);
 }
 
 .actions-list__item-limit {

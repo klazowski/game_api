@@ -29,9 +29,13 @@ body { background-color: var(--c-background); }
 
 .actions-list { display: flex; flex-direction: column; min-width: 20em; width: fit-content; min-height: 20em; height: fit-content; background-color: var(--c-sheet); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1); }
 
-.actions-list__header { display: flex; padding: 0.5rem 1rem; background-color: var(--c-dark); }
+.actions-list__header { display: flex; padding: 0.5rem 1rem; justify-content: space-between; background-color: var(--c-dark); }
 
 .actions-list__header p { font-size: var(--fs-large); }
+
+.actions-list__header__wrapper { display: flex; flex-direction: column; justify-content: right; }
+
+.actions-list__total-actions > span { font-weight: var(--fw-bold); }
 
 .actions-list__item-limit { margin-left: auto; }
 
