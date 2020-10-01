@@ -19,15 +19,18 @@ services:
       MYSQL_URI: mysql://root:secret@mysql:3306/game
       MOCK_DB: 'false'
 
-  react-client:
+  web-app:
     image: node:12-alpine
+    stdin_open: true
     build:
       context: ./client
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
-    container_name: react-client
+    container_name: web-app
     volumes:
       - ./client:/usr/src/app/client
+      - /usr/src/app/client/node_modules
 
   mysql:
     image: mysql:5.7

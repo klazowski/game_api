@@ -16,40 +16,6 @@
 1. Docker:
 
    - `Git clone https://github.com/klazowski/game_api.git`,
-   - `docker-compose up -d`
+   - `docker-compose up -d --build`
 
 2. Apka jest dostępna na Heroku: [https://kalamba-games-api.herokuapp.com/] ale korzysta z tablicy zamiast mysql.
-3. Manualnie/lokalnie:
-
-   - `Git clone https://github.com/klazowski/game_api.git`,
-   - `npm i`,
-   - Utworzyć serwer MySql zawierający bazę `game`
-     Ja skorzystałem z MySQL w Xampp.
-   - Dodać użytkownika posiadającego dostęp do `game`:
-     - `SELECT` oraz `INSERT` na danych,
-     - `CREATE` na strukturze (apka utworzy tabelę `action` jeżeli nie istnieje)
-   - utworzyć plik `.env` zawierający poniższe pola i ustawić odpowiednie wartości dla bazy danych:
-
-     ```
-     .env:
-     NODE_ENV=development
-     PORT=5001
-     MYSQL_URI=mysql://[username]:[password]@[address]:[port]/[dbname]
-     MOCK_DB=false
-     ```
-
-     lub
-
-     ```
-     .env:
-     NODE_ENV=development
-     PORT=5001
-     MYSQL_DB=game
-     MYSQL_USER=username
-     MYSQL_PASSWD=password
-     MYSQL_PORT=3306
-     MYSQL_ADDRESS=localhost
-     MOCK_DB=false
-     ```
-
-   - `npm run start-dev`
