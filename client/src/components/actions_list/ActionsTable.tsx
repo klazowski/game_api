@@ -7,7 +7,7 @@ const ActionsTable = (props: { actions: Action[] }): JSX.Element => {
       <table>
         <thead>
           <tr>
-            <td></td>
+            <td hidden={true}></td>
             <td>User ID</td>
             <td>Game ID</td>
             <td>Action</td>
@@ -15,7 +15,7 @@ const ActionsTable = (props: { actions: Action[] }): JSX.Element => {
         </thead>
         <tbody>
           {props.actions.map((action: Action) => (
-            <tr>
+            <tr key={action.id}>
               <td hidden={true}>{action.id}</td>
               <td>{action.userId}</td>
               <td>{action.gameId}</td>
